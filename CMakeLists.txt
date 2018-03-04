@@ -3,4 +3,4 @@ project(Cpp)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Cpp L1/factorization.cpp)
+add_executable(Cpp L2/wektor.cpp L2/wektor.h L2/punkt.cpp L2/punkt.h L2/prosta.cpp L2/prosta.h L2/main.cpp)

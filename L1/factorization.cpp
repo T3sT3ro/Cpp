@@ -5,6 +5,9 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <climits>
+#include <stdexcept>
+#include <string>
 
 constexpr long long LIMIT = 1 << 21;
 int SITO[LIMIT];
@@ -80,7 +83,7 @@ std::vector<int64_t> factorize(int64_t x) {
             factors.push_back(2);
             x /= 2;
         }
-        for (long i = 3; x > 1 && i <= (int64_t) sqrt(x) + 1; i += 2) {
+        for (long i = 3; x > 1 && i <= (int64_t) std::sqrt(x) + 1; i += 2) {
             while (
                     (i < LIMIT && SITO[(int) i] == i && x % i == 0) ||
                     (i > LIMIT && x % i == 0)
@@ -95,6 +98,21 @@ std::vector<int64_t> factorize(int64_t x) {
     return factors;
 }
 
+int64_t toll(std::string s) {
+    if (s.length() == 0) throw std::invalid_argument("Illegal argument");
+    long long ret = 0;
+    int sgn = 1;
+    for (int i = 0; i < s.length(); ++i) {
+        if (i == 0 && s[i] == '-') {
+            sgn = -1;
+            continue;
+        }
+        if (s[i] < '0' || s[i] > '9') throw std::invalid_argument("Illegal argument");
+        ret = ret * 10 + (s[i] - '0');
+    }
+    return ret * sgn;
+}
+
 int main(int argc, char *argv[]) {
     if (argc == 1) {
         std::cerr << "Pass whole numbers in range [LL_MIN, LL_MAX] as program arguments."
@@ -104,9 +122,10 @@ int main(int argc, char *argv[]) {
         for (int i = 1; i < argc; ++i) {
 
             std::cout << argv[i] << "=";
+            std::cout.flush();
             try {
                 // std::string s(argv[i]);
-                int64_t number = std::stoll(argv[i]);
+                int64_t number = toll(argv[i]);
                 auto factors = factorize(number);
 
                 bool isFirst = true;
@@ -117,7 +136,7 @@ int main(int argc, char *argv[]) {
                     std::cout << factor;
                 }
             } catch (std::invalid_argument &e) {
-                std::cout << "Illegal argument exception.";
+                std::cout << e.what();
             }
             std::cout << std::endl;
         }
