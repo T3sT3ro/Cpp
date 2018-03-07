@@ -4,6 +4,9 @@
 #include <cassert>
 #include <iostream>
 #include <cmath>
+#include <stdexcept>
+#include <functional>
+#include <random>
 #include "prosta.h"
 
 constexpr double epsilon = 0.000001;
@@ -77,10 +80,22 @@ int main() {
                                     Prosta(Punkt(*_a, Wektor(_c->x, _c->y)), Punkt(*_b, Wektor(_c->x, _c->y)))));
             assert(Prosta::perpendicular(Prosta({0, 0}, *_a), Prosta(Wektor(_a->x, _a->y))));
 
-            // check intersection
+            auto closeEqual = [](Punkt a, Punkt b) -> bool {
+                return std::abs(a.x - b.x) < epsilon &&
+                       std::abs(a.y - b.y) < epsilon;
+            };
+            // check intersection for perpendicular
             Punkt inter = Prosta::intersection(Prosta({0, 0}, *_a), Prosta(Wektor(_a->x, _a->y)));
-            assert(std::isnan(inter.x) || std::abs(inter.x - _a->x) < epsilon && std::abs(inter.y - _a->y) < epsilon);
+            assert(std::isnan(inter.x) || closeEqual(inter, *_a));
+
+            // check intersection for askew lines
+            Prosta *pi1 = new Prosta(*a, *b);
+            Prosta *pi2 = new Prosta(*b, *c);
+            assert(closeEqual(Prosta::intersection(*pi1, *pi2), *b));
+            delete(pi1, pi2);
+
             delete (_p);
+
         } catch (std::invalid_argument &e) {
             std::cerr << "Captured exception for randoms: ";
             for (auto const &_r : r)
