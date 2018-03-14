@@ -3,7 +3,7 @@
 //
 
 #include <stdexcept>
-#include "stos.h"
+#include "stos.hpp"
 
 Stack::Stack(int capacity) : _capacity(capacity), _size(0) {
     _container = new std::string[capacity];

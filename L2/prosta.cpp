@@ -4,7 +4,7 @@
 
 #include <stdexcept>
 #include <cmath>
-#include "prosta.h"
+#include "prosta.hpp"
 
 double Prosta::getA() const {
     return a;

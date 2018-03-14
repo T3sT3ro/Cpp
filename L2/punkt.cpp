@@ -2,7 +2,7 @@
 // Created by Tooster on 04.03.2018.
 //
 
-#include "punkt.h"
+#include "punkt.hpp"
 
 Punkt::Punkt(const double &x, const double &y) : x(x), y(y) {}
 

@@ -6,7 +6,7 @@
 #define CPP_PUNKT_H
 
 
-#include "wektor.h"
+#include "wektor.hpp"
 
 class Punkt {
 public:

@@ -3,7 +3,7 @@
 //
 
 #include <iostream>
-#include "stos.h"
+#include "stos.hpp"
 
 bool doTests() {
     auto equal = [](Stack a, Stack b) -> bool {

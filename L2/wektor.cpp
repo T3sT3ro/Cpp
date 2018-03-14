@@ -2,7 +2,7 @@
 // Created by Tooster on 04.03.2018.
 //
 
-#include "wektor.h"
+#include "wektor.hpp"
 
 Wektor::Wektor(const double &dx, const double &dy) : dx(dx), dy(dy) {}
 

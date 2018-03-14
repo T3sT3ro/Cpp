@@ -7,7 +7,7 @@
 #include <stdexcept>
 #include <functional>
 #include <random>
-#include "prosta.h"
+#include "prosta.hpp"
 
 constexpr double epsilon = 0.000001;
 

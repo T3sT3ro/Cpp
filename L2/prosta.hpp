@@ -6,7 +6,7 @@
 #define CPP_PROSTA_H
 
 
-#include "punkt.h"
+#include "punkt.hpp"
 
 class Prosta {
 private:
