@@ -23,7 +23,7 @@ public:
     Stack &operator=(Stack const &s); // copy ass
     Stack &operator=(Stack &&s) noexcept; // move ass
 
-    ~Stack() = default;
+    ~Stack();
 
     void push(const std::string &s);
 

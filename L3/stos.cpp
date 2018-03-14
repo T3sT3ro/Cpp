@@ -6,6 +6,7 @@
 #include "stos.hpp"
 
 Stack::Stack(int capacity) : _capacity(capacity), _size(0) {
+    if (capacity < 1) throw std::runtime_error("Capacity cannot be smaller than 1");
     _container = new std::string[capacity];
 }
 
@@ -37,6 +38,8 @@ Stack &Stack::operator=(Stack const &s) {
 }
 
 Stack &Stack::operator=(Stack &&s) noexcept {
+    if (&s == this)
+        return *this;
     this->~Stack();
     _capacity = s._capacity;
     _size = s._size;
@@ -70,4 +73,8 @@ int Stack::capacity() const {
 
 const std::string *Stack::getContent() const {
     return _container;
+}
+
+Stack::~Stack() {
+    delete[] _container;
 }
