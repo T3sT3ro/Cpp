@@ -36,13 +36,15 @@ public:
 
     bool operator<(const DateHour &rhs) const;
 
+    virtual long long operator-(const DateHour &rhs);
+
     DateHour &operator--(); // pre
     DateHour operator--(int); // post
     DateHour &operator++(); // pre
     DateHour operator++(int); // post
-    DateHour &operator+=(int seconds);
+    DateHour operator+=(int seconds);
 
-    DateHour &operator-=(int seconds);
+    DateHour operator-=(int seconds);
 
 //----------------------------------------------------------------------------------------------------------------------
 protected:
@@ -52,6 +54,12 @@ protected:
     int timeDifference(Date d) const override;
 
     static inline int hourToSeconds(DateHour d);
+
+    static DateHour toDateHour(long long julianseconds);
+
+    long long toJulianSeconds(DateHour d);
+
+
 };
 
 

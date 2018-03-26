@@ -32,6 +32,10 @@ int DateHour::getSeconds() const {
     return seconds;
 }
 
+long long DateHour::operator-(const DateHour &rhs) {
+    return toJulianSeconds(*this) - toJulianSeconds(rhs);
+}
+
 bool DateHour::operator==(const DateHour &rhs) const {
     return year == rhs.year &&
            month == rhs.month &&
@@ -87,21 +91,12 @@ DateHour DateHour::operator++(int) {
     return tmp;
 }
 
-DateHour &DateHour::operator+=(int seconds) {
-    //@formatter:off
-    long long julianseconds = toJulianDay(*this) * 24LL * 3600LL + hours * 3600LL + minutes * 60LL + (long long)this->seconds + (long long)seconds;
-    long long juliandays = julianseconds / (24LL * 3600LL);
-    DateHour tmp = toDate(juliandays);    julianseconds -= juliandays*(24LL * 3600LL);
-    tmp.hours = static_cast<int>(julianseconds / 3600LL);    julianseconds -= tmp.hours*3600LL;
-    tmp.minutes = static_cast<int>(julianseconds / 60LL);    julianseconds -= tmp.minutes*60LL;
-    tmp.seconds = static_cast<int>(julianseconds);
-    tmp.validate();
-    *this = tmp;
-    return *this;
-    //@formatter:on
+DateHour DateHour::operator+=(int seconds) {
+    DateHour tmp(toDateHour(toJulianSeconds(*this) + seconds));
+    return *this = tmp;
 }
 
-DateHour &DateHour::operator-=(int seconds) {
+DateHour DateHour::operator-=(int seconds) {
     return operator+=(-seconds);
 }
 
@@ -118,4 +113,20 @@ int DateHour::timeDifference(Date d) const {
 
 int DateHour::hourToSeconds(DateHour d) {
     return d.seconds + d.minutes * 60 + d.hours * 3600;
+}
+
+DateHour DateHour::toDateHour(long long julianseconds) {
+    //@formatter:off
+    long long juliandays = julianseconds / (24LL * 3600LL);
+    DateHour tmp = toDate(juliandays);                       julianseconds -= juliandays * (24LL * 3600LL);
+    tmp.hours = static_cast<int>(julianseconds / 3600LL);    julianseconds -= tmp.hours * 3600LL;
+    tmp.minutes = static_cast<int>(julianseconds / 60LL);    julianseconds -= tmp.minutes * 60LL;
+    tmp.seconds = static_cast<int>(julianseconds);
+    //@formatter:on
+    tmp.validate();
+    return tmp;
+}
+
+long long DateHour::toJulianSeconds(DateHour d) {
+    return toJulianDay(*this) * 24LL * 3600LL + d.hours * 3600LL + d.minutes * 60LL + (long long) d.seconds;
 }
