@@ -19,11 +19,10 @@ public:
 
     DateHour(int year, int month, int day, int hours, int minutes, int seconds);
 
-    DateHour(Date date);
+    DateHour(Date);
 
-    DateHour(const DateHour &other) = default;
-
-    DateHour &operator=(const DateHour &other) = default;
+    DateHour(const DateHour &) = default; //
+    DateHour &operator=(const DateHour &) = default;
 
 //----------------------------------------------------------------------------------------------------------------------
     int getHours() const;
@@ -32,11 +31,11 @@ public:
 
     int getSeconds() const;
 
-    bool operator==(const DateHour &rhs) const;
+    bool operator==(const DateHour &) const;
 
-    bool operator<(const DateHour &rhs) const;
+    bool operator<(const DateHour &) const;
 
-    virtual long long operator-(const DateHour &rhs);
+    long long operator-(const DateHour &);
 
     DateHour &operator--(); // pre
     DateHour operator--(int); // post
@@ -47,17 +46,18 @@ public:
     DateHour operator-=(int seconds);
 
 //----------------------------------------------------------------------------------------------------------------------
+private:
+
+    void validate() const;
+
 protected:
+    int timeDifference(Date) const override;
 
-    void validate() const override;
-
-    int timeDifference(Date d) const override;
-
-    static inline int hourToSeconds(DateHour d);
+    static inline int hourToSeconds(DateHour);
 
     static DateHour toDateHour(long long julianseconds);
 
-    long long toJulianSeconds(DateHour d);
+    long long toJulianSeconds(DateHour);
 
 
 };

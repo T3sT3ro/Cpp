@@ -6,6 +6,10 @@
 #include <cmath>
 #include "date.hpp"
 
+// forw decl
+constexpr int Date::daysInMonths[2][13];
+constexpr int Date::daysElapsed[2][13];
+
 Date::invalid_date_exception::invalid_date_exception() : runtime_error("invalid date.") {}
 
 Date::Date() {
@@ -14,9 +18,10 @@ Date::Date() {
     year = time->tm_year + 1900;
     month = time->tm_mon + 1;
     day = time->tm_mday;
+    validate();
 }
 
-Date::Date(int year, int month, int day) : year(year), month(month), day(day) { validate(); }
+Date::Date(int year, int month = 1, int day = 1) : year(year), month(month), day(day) { validate(); }
 
 //----------------------------------------------------------------------------------------------------------------------
 int Date::getYear() const {

@@ -30,9 +30,8 @@ public:
 
     Date(int year, int month, int day);
 
-    Date(const Date &other) = default;
-
-    Date &operator=(const Date &other) = default;
+    Date(const Date &) = default; //
+    Date &operator=(const Date &) = default;
 
 //----------------------------------------------------------------------------------------------------------------------
     int getYear() const;
@@ -41,7 +40,7 @@ public:
 
     int getDay() const;
 
-    virtual int operator-(const Date &rhs);
+    int operator-(const Date &);
 
     Date &operator--(); // pre
     Date operator--(int); // post
@@ -52,17 +51,18 @@ public:
     Date &operator-=(int days);
 
 //----------------------------------------------------------------------------------------------------------------------
+private:
+    void validate() const;
+
 protected:
-    virtual void validate() const;
-
     /// @brief Calculates difference in days as this - d;
-    virtual int timeDifference(Date d) const;
+    virtual int timeDifference(Date) const;
 
-    static inline bool isLeapYear(Date date);
+    static inline bool isLeapYear(Date);
 
     /// https://en.wikipedia.org/wiki/Julian_day
     /// @brief converts to date to julian day
-    static long long int toJulianDay(Date d);
+    static long long int toJulianDay(Date);
 
     /// @brief converts julian day to gregorian calendar date
     static Date toDate(long long int julianDay);

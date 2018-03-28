@@ -35,6 +35,5 @@ int main() {
     std::sort(evts.begin(), evts.end(), f);
     for (auto &e : evts) p(e);
     std::printf("Seconds between shove bought and sin realization: %d\n", (int) (d3 - d2));
-
     return 0;
 }

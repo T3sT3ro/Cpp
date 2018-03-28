@@ -13,9 +13,8 @@ DateHour::DateHour() {
     validate();
 }
 
-DateHour::DateHour(int year, int month, int day, int hours, int minutes, int seconds) : Date(year, month, day),
-                                                                                        hours(hours), minutes(minutes),
-                                                                                        seconds(seconds) { validate(); }
+DateHour::DateHour(int year, int month = 1, int day = 1, int hours = 0, int minutes = 0, int seconds = 0) :
+        Date(year, month, day), hours(hours), minutes(minutes), seconds(seconds) { validate(); }
 
 DateHour::DateHour(const Date other) : Date(other), hours(0), minutes(0), seconds(0) { validate(); }
 
@@ -102,7 +101,6 @@ DateHour DateHour::operator-=(int seconds) {
 
 //----------------------------------------------------------------------------------------------------------------------
 void DateHour::validate() const {
-    Date::validate();
     if (hours < 0 || hours > 23 || minutes < 0 || minutes > 59 || seconds < 0 || seconds > 59)
         throw Date::invalid_date_exception();
 }
@@ -118,9 +116,12 @@ int DateHour::hourToSeconds(DateHour d) {
 DateHour DateHour::toDateHour(long long julianseconds) {
     //@formatter:off
     long long juliandays = julianseconds / (24LL * 3600LL);
-    DateHour tmp = toDate(juliandays);                       julianseconds -= juliandays * (24LL * 3600LL);
-    tmp.hours = static_cast<int>(julianseconds / 3600LL);    julianseconds -= tmp.hours * 3600LL;
-    tmp.minutes = static_cast<int>(julianseconds / 60LL);    julianseconds -= tmp.minutes * 60LL;
+    DateHour tmp = toDate(juliandays);
+    julianseconds -= juliandays * (24LL * 3600LL);
+    tmp.hours = static_cast<int>(julianseconds / 3600LL);
+    julianseconds -= tmp.hours * 3600LL;
+    tmp.minutes = static_cast<int>(julianseconds / 60LL);
+    julianseconds -= tmp.minutes * 60LL;
     tmp.seconds = static_cast<int>(julianseconds);
     //@formatter:on
     tmp.validate();
