@@ -11,7 +11,7 @@
 #include <istream>
 
 class tab_bit {
-    typedef uint64_t word; // komorka w tablicy
+    typedef unsigned long long word; // komorka w tablicy
     static const int wordSize = sizeof(word) * 8; // rozmiar slowa w bitach
     class ref {
         tab_bit *_tab_bit_ptr; // pointer to original bitset
