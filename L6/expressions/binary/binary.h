@@ -12,9 +12,11 @@ class Binary : public Unary {
 protected:
     const Expression *e2;
 public:
-    int getPriority() override { return 10; };
+    int getPriority() const override { return Expression::PRIORITY_BINARY; };
 
     Binary(const Expression *e1, const Expression *e2);
+
+    virtual ~Binary();
 };
 
 

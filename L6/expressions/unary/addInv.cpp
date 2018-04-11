@@ -11,5 +11,11 @@ double AddInv::eval() const {
 }
 
 std::string AddInv::toString() const {
-    return std::string("(-1)*(" + e1->toString() + ")");
+    auto s = e1->toString();
+    if (e1->getPriority() > this->getPriority()) s = "(" + s + ")";
+    return s;
+}
+
+int AddInv::getPriority() const {
+    return Expression::PRIORITY_ADD_INV;
 }

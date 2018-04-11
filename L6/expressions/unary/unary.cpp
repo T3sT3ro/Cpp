@@ -5,3 +5,7 @@
 #include "unary.h"
 
 Unary::Unary(const Expression *e) : e1(e) {}
+
+Unary::~Unary() {
+    delete e1;
+}

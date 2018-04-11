@@ -22,6 +22,8 @@ public:
     double eval() const override;
 
     std::string toString() const override;
+
+    int getPriority() const override;
 };
 
 

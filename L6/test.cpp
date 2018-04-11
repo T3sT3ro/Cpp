@@ -34,6 +34,8 @@ void pr_var() {
 }
 
 void pr(Expression *e) {
+    cout << std::fixed;
+    cout.precision(3);
     cout << e->toString() << "\t=\t" << e->eval() << endl;
 }
 
@@ -133,5 +135,10 @@ int main() {
              << e3->eval() << "\t"
              << e4->eval() << endl;
     }
+
+    pr(e1);
+    pr(e2);
+    pr(e3);
+    pr(e4);
 
 }

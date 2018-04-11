@@ -22,6 +22,8 @@ public:
 
     std::string toString() const override;
 
+    int getPriority() const override;
+
 };
 
 

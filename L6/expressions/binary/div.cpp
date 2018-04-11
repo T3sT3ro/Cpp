@@ -11,6 +11,13 @@ double Div::eval() const {
 }
 
 std::string Div::toString() const {
-    return std::string("(" + e1->toString() + ")/(" + e2->toString() + ")");
+    auto s1 = e1->toString();
+    auto s2 = e2->toString();
+    if (e1->getPriority() > this->getPriority()) s1 = "(" + s1 + ")";
+    if (e2->getPriority() >= this->getPriority()) s2 = "(" + s2 + ")";
+    return std::string(s1 + "/" + s2);
+}
 
+int Div::getPriority() const {
+    return Expression::PRIORITY_DIV;
 }

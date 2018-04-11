@@ -17,7 +17,9 @@ protected:
 public:
     Unary(const Expression *e);
 
-    int getPriority() override { return 1; };
+    int getPriority() const override { return Expression::PRIORITY_UNARY; };
+
+    virtual ~Unary();
 };
 
 

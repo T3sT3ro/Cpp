@@ -12,5 +12,13 @@ double Pow::eval() const {
 }
 
 std::string Pow::toString() const {
-    return std::string("(" + e1->toString() + ")^(" + e2->toString() + ")");
+    auto s1 = e1->toString();
+    auto s2 = e2->toString();
+    if (e1->getPriority() >= this->getPriority()) s1 = "(" + s1 + ")";
+    if (e2->getPriority() > this->getPriority()) s2 = "(" + s2 + ")";
+    return e1->toString() + "^" + e2->toString();
+}
+
+int Pow::getPriority() const {
+    return Expression::PRIORITY_POW;
 }

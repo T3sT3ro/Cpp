@@ -36,4 +36,16 @@ add_executable(Cpp
         L6/expressions/binary/binary.cpp
         L6/expressions/binary/binary.h
         L6/expressions/binary/add.cpp
-        L6/expressions/binary/add.h L6/expressions/binary/sub.cpp L6/expressions/binary/sub.h L6/expressions/binary/mul.cpp L6/expressions/binary/mul.h L6/expressions/binary/div.cpp L6/expressions/binary/div.h L6/expressions/binary/log.cpp L6/expressions/binary/log.h L6/expressions/binary/mod.cpp L6/expressions/binary/mod.h L6/expressions/binary/pow.cpp L6/expressions/binary/pow.h)
+        L6/expressions/binary/add.h
+        L6/expressions/binary/sub.cpp
+        L6/expressions/binary/sub.h
+        L6/expressions/binary/mul.cpp
+        L6/expressions/binary/mul.h
+        L6/expressions/binary/div.cpp
+        L6/expressions/binary/div.h
+        L6/expressions/binary/log.cpp
+        L6/expressions/binary/log.h
+        L6/expressions/binary/mod.cpp
+        L6/expressions/binary/mod.h
+        L6/expressions/binary/pow.cpp
+        L6/expressions/binary/pow.h)

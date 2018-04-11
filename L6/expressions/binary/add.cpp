@@ -11,6 +11,9 @@ double Add::eval() const {
 }
 
 std::string Add::toString() const {
-    return std::string("(" + e1->toString() + ")+(" + e2->toString() + ")");
+    return e1->toString() + "+" + e2->toString();
+}
 
+int Add::getPriority() const {
+    return Expression::PRIORITY_ADD;
 }

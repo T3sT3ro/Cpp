@@ -3,6 +3,7 @@
 //
 
 #include "abs.h"
+#include <cmath>
 
 Abs::Abs(const Expression *e) : Unary(e) {}
 

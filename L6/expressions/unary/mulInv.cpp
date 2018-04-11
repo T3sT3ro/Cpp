@@ -11,5 +11,11 @@ double MulInv::eval() const {
 }
 
 std::string MulInv::toString() const {
-    return std::string("1/(" + e1->toString() + ")");
+    auto s = e1->toString();
+    if (e1->getPriority() >= this->getPriority()) s = "(" + s + ")";
+    return std::string("1/" + s);
+}
+
+int MulInv::getPriority() const {
+    return Expression::PRIORITY_MUL_INV;
 }

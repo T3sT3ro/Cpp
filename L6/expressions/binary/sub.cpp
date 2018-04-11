@@ -11,6 +11,11 @@ double Sub::eval() const {
 }
 
 std::string Sub::toString() const {
-    return std::string("(" + e1->toString() + ")-(" + e2->toString() + ")");
+    auto s = e1->toString();
+    if (e1->getPriority() == this->getPriority()) s = "(" + s + ")";
+    return e1->toString() + "-" + e2->toString();
+}
 
+int Sub::getPriority() const {
+    return Expression::PRIORITY_SUB;
 }
