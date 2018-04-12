@@ -6,7 +6,7 @@
 #define CPP_MULINV_H
 
 
-#include "unary.h"
+#include "unary.hpp"
 
 class MulInv : public Unary {
 public:

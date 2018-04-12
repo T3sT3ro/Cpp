@@ -5,7 +5,7 @@
 #ifndef CPP_ADDINV_H
 #define CPP_ADDINV_H
 
-#include "unary.h"
+#include "unary.hpp"
 
 /**
  * @class Additive inverse operand class

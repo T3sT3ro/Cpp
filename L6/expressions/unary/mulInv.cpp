@@ -2,7 +2,7 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#include "mulInv.h"
+#include "mulInv.hpp"
 
 MulInv::MulInv(const Expression *e) : Unary(e) {}
 
@@ -13,7 +13,7 @@ double MulInv::eval() const {
 std::string MulInv::toString() const {
     auto s = e1->toString();
     if (e1->getPriority() >= this->getPriority()) s = "(" + s + ")";
-    return std::string("1/" + s);
+    return "1/" + s;
 }
 
 int MulInv::getPriority() const {

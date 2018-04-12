@@ -2,7 +2,7 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#include "num.h"
+#include "num.hpp"
 
 Num::Num(const double val) : val(val) {}
 

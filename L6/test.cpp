@@ -3,33 +3,33 @@
 //
 
 #include <iostream>
-#include "expressions/expression.h"
-#include "expressions/unary/sin.h"
-#include "expressions/nullary/Phi.h"
-#include "expressions/binary/sub.h"
-#include "expressions/nullary/pi.h"
-#include "expressions/binary/add.h"
-#include "expressions/nullary/num.h"
-#include "expressions/binary/mul.h"
-#include "expressions/nullary/var.h"
-#include "expressions/nullary/e.h"
-#include "expressions/unary/cos.h"
-#include "expressions/unary/exp.h"
-#include "expressions/unary/ln.h"
-#include "expressions/unary/abs.h"
-#include "expressions/unary/addInv.h"
-#include "expressions/unary/mulInv.h"
-#include "expressions/binary/div.h"
-#include "expressions/binary/log.h"
-#include "expressions/binary/mod.h"
-#include "expressions/binary/pow.h"
+#include "expressions/expression.hpp"
+#include "expressions/unary/sin.hpp"
+#include "expressions/nullary/Phi.hpp"
+#include "expressions/binary/sub.hpp"
+#include "expressions/nullary/pi.hpp"
+#include "expressions/binary/add.hpp"
+#include "expressions/nullary/num.hpp"
+#include "expressions/binary/mul.hpp"
+#include "expressions/nullary/var.hpp"
+#include "expressions/nullary/e.hpp"
+#include "expressions/unary/cos.hpp"
+#include "expressions/unary/exp.hpp"
+#include "expressions/unary/ln.hpp"
+#include "expressions/unary/abs.hpp"
+#include "expressions/unary/addInv.hpp"
+#include "expressions/unary/mulInv.hpp"
+#include "expressions/binary/div.hpp"
+#include "expressions/binary/log.hpp"
+#include "expressions/binary/mod.hpp"
+#include "expressions/binary/pow.hpp"
 
 using namespace std;
 
 void pr_var() {
     auto vx = Var::getVars();
     cout << "variables: {";
-    for (auto v: vx) cout << "\t`" << v.first << ":" << v.second;
+    for (auto v: vx) cout << "\t'" << v.first << ":" << v.second;
     cout << "}" << endl;
 }
 
@@ -57,6 +57,8 @@ void demo() {
     pr(new Exp(dmm));
     pr(new Ln(dmm));
     pr(new Abs(dmm));
+    pr(new AddInv(new Num(7)));
+    pr(new AddInv(new Num(-7)));
     pr(new AddInv(dmm));
     pr(new MulInv(dmm));
     pr(new Add(dmm, dmm));
@@ -67,8 +69,6 @@ void demo() {
     pr(new Mod(dmm, dmm));
     pr(new Pow(dmm, dmm));
     cout << "\t-= DEMO END =-" << endl << endl;
-    cout.flush();
-
 }
 
 int main() {
@@ -140,5 +140,13 @@ int main() {
     pr(e2);
     pr(e3);
     pr(e4);
+    pr(new Sub(new Sub(new Num(1), new Num(7)),
+               new Sub(new Num(2), new Num(42))));
 
+    pr(new Pow(new Sub(new Num(1),
+                       new Div(new Num(3), new Num(5))),
+               new Mod(new Mul(new Num(7), new Var("x")),
+                       new Add(new Num(7), new Num(9)))));
+
+    cout.flush();
 }

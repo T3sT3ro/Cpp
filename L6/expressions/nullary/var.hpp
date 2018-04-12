@@ -8,7 +8,7 @@
 
 #include <string>
 #include <vector>
-#include "../expression.h"
+#include "../expression.hpp"
 
 class Var : public Expression {
     std::string symbol;

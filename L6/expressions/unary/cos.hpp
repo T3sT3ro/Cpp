@@ -6,7 +6,7 @@
 #define CPP_COS_H
 
 
-#include "unary.h"
+#include "unary.hpp"
 
 /**
  * @class Cosinus operand class

@@ -5,7 +5,7 @@
 #ifndef CPP_MOD_H
 #define CPP_MOD_H
 
-#include "binary.h"
+#include "binary.hpp"
 
 /**
  * @class Modulo operator class

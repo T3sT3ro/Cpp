@@ -6,7 +6,7 @@
 #define CPP_INTEGER_H
 
 
-#include "../expression.h"
+#include "../expression.hpp"
 
 /**
  * @class Class representing a number expression

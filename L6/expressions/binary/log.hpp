@@ -6,7 +6,7 @@
 #define CPP_LOG_H
 
 
-#include "binary.h"
+#include "binary.hpp"
 
 /**
  * @class Logarithm operator class

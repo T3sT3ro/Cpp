@@ -6,7 +6,7 @@
 #define CPP_PHI_H
 
 
-#include "constant.h"
+#include "constant.hpp"
 
 class Phi : public Constant {
 public:

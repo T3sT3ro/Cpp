@@ -2,7 +2,7 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#include "Phi.h"
+#include "Phi.hpp"
 
 double Phi::eval() const {
     return 1.618033987;

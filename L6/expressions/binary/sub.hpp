@@ -6,7 +6,7 @@
 #define CPP_SUB_H
 
 
-#include "binary.h"
+#include "binary.hpp"
 
 /**
  * @class Subtraction operand class

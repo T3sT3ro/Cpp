@@ -2,7 +2,7 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#include "sub.h"
+#include "sub.hpp"
 
 Sub::Sub(const Expression *e1, const Expression *e2) : Binary(e1, e2) {}
 
@@ -11,9 +11,10 @@ double Sub::eval() const {
 }
 
 std::string Sub::toString() const {
-    auto s = e1->toString();
-    if (e1->getPriority() == this->getPriority()) s = "(" + s + ")";
-    return e1->toString() + "-" + e2->toString();
+    auto s1 = e1->toString();
+    auto s2 = e2->toString();
+    if (e2->getPriority() >= this->getPriority()) s2 = "(" + s2 + ")";
+    return s1 + "-" + s2;
 }
 
 int Sub::getPriority() const {

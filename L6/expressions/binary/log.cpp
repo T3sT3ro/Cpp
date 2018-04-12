@@ -3,7 +3,7 @@
 //
 
 #include <cmath>
-#include "log.h"
+#include "log.hpp"
 
 Log::Log(const Expression *e1, const Expression *e2) : Binary(e1, e2) {}
 

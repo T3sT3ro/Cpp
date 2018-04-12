@@ -2,7 +2,7 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#include "abs.h"
+#include "abs.hpp"
 #include <cmath>
 
 Abs::Abs(const Expression *e) : Unary(e) {}
@@ -12,5 +12,5 @@ double Abs::eval() const {
 }
 
 std::string Abs::toString() const {
-    return std::string("|" + e1->toString() + "|");
+    return "|" + e1->toString() + "|";
 }

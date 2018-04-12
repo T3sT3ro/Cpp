@@ -3,7 +3,8 @@
 //
 
 #include <algorithm>
-#include "var.h"
+#include <stdexcept>
+#include "var.hpp"
 
 std::vector<std::pair<std::string, double>> Var::variables;
 
@@ -15,7 +16,7 @@ double Var::eval() const {
 }
 
 std::string Var::toString() const {
-    return symbol;
+    return "'" + symbol;
 }
 
 double Var::getVar(const std::string symbol) {

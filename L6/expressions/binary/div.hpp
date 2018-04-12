@@ -6,7 +6,7 @@
 #define CPP_DIV_H
 
 
-#include "binary.h"
+#include "binary.hpp"
 
 /**
  * @class Division operand class

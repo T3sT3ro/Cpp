@@ -6,7 +6,7 @@
 #define CPP_MUL_H
 
 
-#include "binary.h"
+#include "binary.hpp"
 
 /**
  * @class Multiplication operand class

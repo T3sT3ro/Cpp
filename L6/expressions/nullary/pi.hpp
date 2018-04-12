@@ -2,15 +2,16 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#ifndef CPP_E_H
-#define CPP_E_H
+#ifndef CPP_PI_H
+#define CPP_PI_H
 
-#include "constant.h"
+
+#include "constant.hpp"
 
 /**
- * @class E constant = 2.17...
+ * @class Constant PI = 3.1415.....
  */
-class E : public Constant {
+class Pi : public Constant {
 public:
     double eval() const override;
 
@@ -18,4 +19,4 @@ public:
 };
 
 
-#endif //CPP_E_H
+#endif //CPP_PI_H

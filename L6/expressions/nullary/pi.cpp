@@ -3,7 +3,7 @@
 //
 
 #include <cmath>
-#include "pi.h"
+#include "pi.hpp"
 
 double Pi::eval() const {
     return M_PI;

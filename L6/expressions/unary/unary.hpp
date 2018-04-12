@@ -6,7 +6,7 @@
 #define CPP_UNARY_H
 
 #include <memory>
-#include "../expression.h"
+#include "../expression.hpp"
 
 /**
  * @class Class representing unary operand

@@ -6,7 +6,7 @@
 #define CPP_SIN_H
 
 
-#include "unary.h"
+#include "unary.hpp"
 
 /**
  * @class Sinus operand class

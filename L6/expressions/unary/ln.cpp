@@ -2,7 +2,7 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#include "ln.h"
+#include "ln.hpp"
 #include <cmath>
 
 Ln::Ln(const Expression *e) : Unary(e) {}
@@ -12,5 +12,5 @@ double Ln::eval() const {
 }
 
 std::string Ln::toString() const {
-    return std::string("ln(" + e1->toString() + ")");
+    return "ln(" + e1->toString() + ")";
 }

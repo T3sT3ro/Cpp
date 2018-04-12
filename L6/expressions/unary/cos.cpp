@@ -3,7 +3,7 @@
 //
 
 #include <cmath>
-#include "cos.h"
+#include "cos.hpp"
 
 Cos::Cos(const Expression *e) : Unary(e) {}
 
@@ -12,5 +12,5 @@ double Cos::eval() const {
 }
 
 std::string Cos::toString() const {
-    return std::string("cos(" + e1->toString() + ")");
+    return "cos(" + e1->toString() + ")";
 }

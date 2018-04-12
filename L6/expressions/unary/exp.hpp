@@ -6,7 +6,7 @@
 #define CPP_EXP_H
 
 
-#include "unary.h"
+#include "unary.hpp"
 
 /**
  * @class Exponential function operand class

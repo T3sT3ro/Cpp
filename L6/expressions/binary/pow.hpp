@@ -5,7 +5,7 @@
 #ifndef CPP_POW_H
 #define CPP_POW_H
 
-#include "binary.h"
+#include "binary.hpp"
 
 /**
  * @class Power operator class

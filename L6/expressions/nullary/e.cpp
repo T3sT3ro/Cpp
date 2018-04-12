@@ -3,7 +3,7 @@
 //
 
 #include <cmath>
-#include "e.h"
+#include "e.hpp"
 
 double E::eval() const {
     return M_E;

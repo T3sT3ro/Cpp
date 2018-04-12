@@ -6,7 +6,7 @@
 #define CPP_LN_H
 
 
-#include "unary.h"
+#include "unary.hpp"
 
 /**
  * @class Natural logarithm operand class

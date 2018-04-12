@@ -6,7 +6,7 @@
 #define CPP_CONSTANT_H
 
 
-#include "../expression.h"
+#include "../expression.hpp"
 
 /**
  * @class Class representing a constant expression

@@ -6,7 +6,7 @@
 #define CPP_BINARY_H
 
 
-#include "../unary/unary.h"
+#include "../unary/unary.hpp"
 
 class Binary : public Unary {
 protected:

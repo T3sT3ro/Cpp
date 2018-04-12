@@ -3,7 +3,7 @@
 //
 
 #include <cmath>
-#include "exp.h"
+#include "exp.hpp"
 
 Exp::Exp(const Expression *e) : Unary(e) {}
 
@@ -12,5 +12,5 @@ double Exp::eval() const {
 }
 
 std::string Exp::toString() const {
-    return std::string("exp(" + e1->toString() + ")");
+    return "exp(" + e1->toString() + ")";
 }

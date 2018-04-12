@@ -2,7 +2,7 @@
 // Created by Tooster on 10.04.2018.
 //
 
-#include "mul.h"
+#include "mul.hpp"
 
 Mul::Mul(const Expression *e1, const Expression *e2) : Binary(e1, e2) {}
 

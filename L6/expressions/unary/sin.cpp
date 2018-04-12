@@ -3,7 +3,7 @@
 //
 
 #include <cmath>
-#include "sin.h"
+#include "sin.hpp"
 
 Sin::Sin(const Expression *e) : Unary(e) {}
 

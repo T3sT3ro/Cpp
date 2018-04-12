@@ -6,7 +6,7 @@
 #define CPP_ADD_H
 
 
-#include "binary.h"
+#include "binary.hpp"
 
 /**
  * @class Addition operand class
