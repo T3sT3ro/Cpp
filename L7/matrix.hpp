@@ -27,6 +27,13 @@ namespace Calculations {
 
         virtual ~Matrix();
 
+        int getRows() const;
+
+        int getColumns() const;
+
+        double get(int row, int col) const noexcept(false);
+
+        Matrix &set(int row, int col, double val) noexcept(false);
 
         // @formatter:off
         Matrix operator*(double scalar) const noexcept; // scalar multiplication
@@ -34,32 +41,30 @@ namespace Calculations {
         Matrix &operator*=(const Matrix &other) noexcept(false); //other multiplied to the right
         Matrix &operator-=(const Matrix &other) noexcept(false);
         friend Matrix operator+(const Matrix &m1, const Matrix &m2) noexcept(false);
-
         friend Matrix operator-(const Matrix &m1, const Matrix &m2) noexcept(false);
-
         friend Matrix operator*(double, const Matrix &) noexcept;
         friend Matrix operator*(const Matrix &, const Matrix &) noexcept(false);
-        // @formatter:on
+
         Matrix transposition() noexcept;
 
         Matrix &rowSwap(int i, int j) noexcept(false);
-
         Matrix &rowMult(int i, double scalar) noexcept(false);
-
         Matrix &rowAdd(int to, int from, double scalar) noexcept(false);
 
         Matrix &colSwap(int i, int j) noexcept(false);
-
         Matrix &colMult(int i, double scalar) noexcept(false);
-
         Matrix &colAdd(int to, int from, double scalar) noexcept(false);
 
-        Matrix complement(int row, int column) noexcept(false);
+        Matrix complement(int row, int col) const noexcept(false);
 
-        double det() noexcept(false);
+        double det() const noexcept(false);
 
-//        std::istream &operator>>(std::istream &we, Matrix &m);
-//        std::ostream &operator<<(std::ostream &wy, const Matrix &m);
+        Matrix inverse() const noexcept(false);
+        // @formatter:on
+
+        friend std::istream &operator>>(std::istream &in, Matrix &m);
+
+        friend std::ostream &operator<<(std::ostream &out, const Matrix &m);
     };
 
 

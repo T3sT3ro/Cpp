@@ -11,6 +11,8 @@ namespace Calculations {
     class not_square_matrix_exception : public matrix_exception {
     public:
         not_square_matrix_exception() : matrix_exception("Square matrix required, given rectangular") {}
+
+        not_square_matrix_exception(const std::string &description) : matrix_exception(description) {}
     };
 }
 #endif //CPP_NOT_SQUARE_MATRIX_EXCEPTION_HPP

@@ -11,7 +11,6 @@ namespace Calculations {
     class invalid_dimensions_exception : public matrix_exception {
     public:
         invalid_dimensions_exception() : matrix_exception("Invalid matrix dimensions.") {}
-
         invalid_dimensions_exception(const std::string &description) : matrix_exception(description) {}
     };
 }

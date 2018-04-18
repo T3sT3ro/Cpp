@@ -11,6 +11,8 @@ namespace Calculations {
     class invalid_scalar_exception : public matrix_exception {
     public:
         invalid_scalar_exception() : matrix_exception("Invalid scalar in operation.") {}
+
+        invalid_scalar_exception(const std::string &description) : matrix_exception(description) {}
     };
 }
 #endif //CPP_INVALID_SCALAR_EXCEPTION_HPP

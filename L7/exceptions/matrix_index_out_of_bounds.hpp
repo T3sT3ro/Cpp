@@ -11,6 +11,8 @@ namespace Calculations {
     class matrix_index_out_of_bounds : public matrix_exception {
     public:
         matrix_index_out_of_bounds() : matrix_exception("Invalid matrix index") {}
+
+        matrix_index_out_of_bounds(const std::string &description) : matrix_exception(description) {}
     };
 }
 #endif //CPP_INVALID_MATRIX_ROW_COLUMN_INDEX_HPP
