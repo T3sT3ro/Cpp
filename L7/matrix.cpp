@@ -44,6 +44,7 @@ namespace Calculations {
             for (int i = 0; i < rows; ++i)
                 delete tab[i];
             delete[] tab;
+            tab = nullptr;
         }
     }
 
@@ -275,7 +276,7 @@ namespace Calculations {
         Matrix ret(*this);
         for (int i = 0; i < rows; ++i)
             for (int j = 0; j < columns; ++j)
-                ret.set(j + 1, i + 1, (i + j % 2 == 0 ? 1 : -1) * this->complement(i + 1, j + 1).det());
+                ret.set(j + 1, i + 1, ((i + j) % 2 == 0 ? 1 : -1) * this->complement(i + 1, j + 1).det());
         return ret * (1 / _det);
     }
 

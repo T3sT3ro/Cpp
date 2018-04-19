@@ -6,6 +6,7 @@
 #include "matrix.hpp"
 #include "exceptions/invalid_scalar_exception.hpp"
 #include "exceptions/not_square_matrix_exception.hpp"
+#include "exceptions/not_invertible_matrix_exception.h"
 
 using namespace Calculations;
 
@@ -36,7 +37,10 @@ int main() {
     std::cout << "Input 3x3 matrix:\n";
     std::cin >> f;
     std::cout << "Matrix: \n" << f << "\n";
-    std::cout << "f inverse: \n" << f.inverse() << "\n";
+    std::cout << "f determinant: \n" << f.det() << "\n";
+    try { std::cout << "f inverse: \n" << f.inverse() << "\n"; } catch (not_invertible_matrix_exception &e) {
+        std::cout << "COUGHT: " << e.what() << "\n";
+    }
     std::cout << "Transpose: \n" << f.transposition() << "\n";
     std::cout << "Scalar 5 multiply 1st row: \n" << f.rowMult(1, 5) << "\n";
     std::cout << "Swap 1<->3 : \n" << f.rowSwap(1, 3) << "\n";
