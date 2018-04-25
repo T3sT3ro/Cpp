@@ -5,16 +5,14 @@
 #include "rational.hpp"
 #include "exception/zero_denominator_exception.hpp"
 #include "exception/out_of_range_exception.hpp"
-
-#if __cplusplus >= 201703L
-
-#include <numeric>
 #include <set>
 #include <iostream>
 #include <map>
+#include <climits>
+#include <regex>
 
-#elif __cplusplus >= 201103L
-#include <experimental/numeric>
+#if __cplusplus >= 201703L
+#include <numeric>
 #endif
 
 namespace Calculations {
@@ -31,8 +29,8 @@ namespace Calculations {
         b = std::abs(b);
 #if __cplusplus >= 201703L
         return std::gcd(a, b);
-#elif __cplusplus >= 201103L
-        return std::experimental::gcd(a,b);
+#else
+        return std::__gcd(a, b);
 #endif
     }
 
@@ -44,7 +42,8 @@ namespace Calculations {
 
     void Rational::setDen(int den) {
         if (den == 0) throw zero_denominator_exception();
-        Rational::den = den;
+        Rational::num *= den / std::abs(den);
+        Rational::den = std::abs(den);
     }
 
     std::string Rational::asDecimal() {

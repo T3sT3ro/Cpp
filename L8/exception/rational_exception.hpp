@@ -5,7 +5,7 @@
 #ifndef CPP_RATIONAL_EXCEPTION_HPP
 #define CPP_RATIONAL_EXCEPTION_HPP
 
-#include <bits/exception.h>
+#include <exception>
 #include <string>
 
 class rational_exception : public std::exception {
