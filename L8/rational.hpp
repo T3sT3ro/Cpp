@@ -28,6 +28,8 @@ namespace Calculations {
 
         void setDen(int den);
 
+        std::string asDecimal();
+
         Rational operator-() const;
 
         Rational operator!() const noexcept(false);
@@ -43,7 +45,6 @@ namespace Calculations {
         Rational &operator*=(const Rational &) noexcept(false);
 
         Rational &operator/=(const Rational &) noexcept(false);
-
         friend Rational operator+(const Rational &, const Rational &) noexcept(false);
 
         friend Rational operator-(const Rational &, const Rational &) noexcept(false);

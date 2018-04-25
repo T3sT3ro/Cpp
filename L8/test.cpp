@@ -16,6 +16,11 @@ int main() {
     Rational x = r + Rational(1, 4);
     x = !x;
     std::cout << x << std::endl;
+    std::cout << Rational(122177813, 99900000).asDecimal() << std::endl;
+    std::cout << Rational(1, 3).asDecimal() << std::endl;
+    std::cout << Rational(1, 2).asDecimal() << std::endl;
+    std::cout << Rational(1, 64).asDecimal() << std::endl;
+    std::cout << Rational(1, 81).asDecimal() << std::endl;
     try {
         Rational t(3, 0);
         t *= Rational(3);

@@ -10,6 +10,8 @@
 
 #include <numeric>
 #include <set>
+#include <iostream>
+#include <map>
 
 #elif __cplusplus >= 201103L
 #include <experimental/numeric>
@@ -43,6 +45,25 @@ namespace Calculations {
     void Rational::setDen(int den) {
         if (den == 0) throw zero_denominator_exception();
         Rational::den = den;
+    }
+
+    std::string Rational::asDecimal() {
+        int rem = num % den;
+        std::string fracstr;
+        std::map<int, int> remainders;
+        int i = -1;
+        do {
+            i++;
+            remainders[rem] = i;
+            rem *= 10;
+            int frac = rem / den;
+            fracstr += std::to_string(frac);
+            rem %= den;
+        } while (remainders.find(rem) == remainders.end());
+
+        if (rem != 0)
+            fracstr.insert(static_cast<unsigned long long int>(remainders[rem]), "(");
+        return std::to_string(num / den) + "," + fracstr + (rem != 0 ? ")" : "");
     }
 
     Rational Rational::operator-() const { return Rational(-num, den); }
