@@ -5,6 +5,6 @@
 #ifndef CPP_BST2_HPP
 #define CPP_BST2_HPP
 
-#include "BST_base_implementation.hpp"
+#include "BST_base.hpp"
 
 #endif //CPP_BST2_HPP

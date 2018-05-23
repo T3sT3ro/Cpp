@@ -2,7 +2,7 @@
 // Created by i300791 on 23.05.18.
 //
 
-#include "BST_base_implementation.hpp"
+#include "BST.hpp"
 
 using namespace structs;
 
