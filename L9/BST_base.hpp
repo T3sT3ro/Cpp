@@ -28,7 +28,7 @@ namespace structs {
 //    template<typename T>
 //    struct less {
 //        typedef typename std::remove_cv<T>::type K;
-//        typename std::enable_if<std::is_same<char *, K>::value>::type
+//        typename std::enable_if<std::is_same<char *, K>::value, bool>::type
 //        operator()(T &x, T &y) const { return std::string(x).compare(std::string(y)) < 0; }
 //    };
 
@@ -197,21 +197,52 @@ namespace structs {
 
     template<typename T, class Compare>
     typename BST<T, Compare>::Node *BST<T, Compare>::_insert(T elem, BST::Node *current, BST::Node *parent) {
-        if (current == nullptr)
-            return current = new Node(elem);
+        if (current == nullptr){
+            Node n = new Node(elem);
+            return current;
+        }
         else {
-            if (_cmp(elem, current->_data))
-                current->_L = _insert(elem, current->_L, current);
-            else
-                current->_R = _insert(elem, current->_R, current);
-
+            if (_cmp(elem, current->_data)) current->_L = _insert(elem, current->_L, current);
+            else current->_R = _insert(elem, current->_R, current);
         }
         return current;
     }
 
     template<typename T, class Compare>
-    typename BST<T, Compare>::Node *BST<T, Compare>::_remove(T, BST::Node *) {
-        return nullptr;
+    typename BST<T, Compare>::Node *BST<T, Compare>::_remove(T elem, BST::Node *current) {
+        if (current == nullptr)
+            return nullptr;
+        if (!_cmp(current->_data, elem)) // <
+            current->_L = _remove(elem, current->_L);
+        else if (!_cmp(elem, current->_data)) // >
+            current->_R = _remove(elem, current->_R);
+        else {
+            if (current->_L == nullptr)
+                return current->_R;
+            else if (current->_R == nullptr)
+                return current->_L;
+            else {
+                T value = _min(current);
+                current->_data = value;
+                current->_L = _remove(value, current->_L);
+            }
+        }
+        return current;
+    }
+
+    template<typename T, class Compare>
+    bool BST<T, Compare>::_find(T elem, BST::Node *current) {
+        if(current == nullptr) return nullptr;
+        if(_cmp(elem, current->_data) && _cmp(current->_data, elem)) return true;
+        if(_cmp(elem, current->_data)) return _find(elem, current->_L);
+        return _find(elem, current->_R);
+
+    }
+
+    template<typename T, class Compare>
+    T BST<T, Compare>::_min(BST::Node *current) {
+        if(current->_L==nullptr)return current->_data;
+        return _min(current->_L);
     }
 
 

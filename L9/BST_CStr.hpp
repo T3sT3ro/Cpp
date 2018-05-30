@@ -40,9 +40,7 @@ namespace structs {
 
 
     struct lexicographic {
-        bool operator()(const std::string &s1, const std::string &s2) { // <=
-            return s1 <= s2;
-        }
+        bool operator()(const std::string &s1, const std::string &s2) { return s1.compare(s2) < 1; }
     };
 
     template<>
